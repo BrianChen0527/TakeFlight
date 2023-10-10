@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PipeTriggerScript : MonoBehaviour
@@ -20,6 +21,10 @@ public class PipeTriggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        scoreLogic.AddScore();
+        // Make sure the trigger collision was with the plane, not something else.
+        if (collision.gameObject.layer == 3)
+        {
+            scoreLogic.AddScore(1);
+        }
     }
 }
